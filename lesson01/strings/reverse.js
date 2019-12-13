@@ -1,13 +1,19 @@
-
-function reverseString(s) {
+function reverseString(str) {
   var rv = "";
+  
   var i;
-
-  for (i = 0; i < s.length; i++) {
-    rv += s.charAt(s.length - 1 - i);
+  for (i = 0; i < str.length; i++) {
+    rv += str.charAt(str.length - 1 - i);
   }
 
   return rv;
 }
 
-console.log(reverseString("paris"));
+function reverseString2(str) {
+  var letters = str.split("");
+  // det här är en kommentar
+  letters.reverse(); // reverse letters
+  return letters.join("");
+}
+
+console.log(reverseString2("sirap"));
