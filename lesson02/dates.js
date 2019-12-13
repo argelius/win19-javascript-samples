@@ -19,7 +19,7 @@ function zeroPad(n) {
   return n.toString();
 }
 
-while (!(day == 1 && month == 9)) {
+while (!(day === 1 && month === 9)) {
   ar.push(year + "-" + zeroPad(month) + "-" + zeroPad(day));
 
   day += 1;
