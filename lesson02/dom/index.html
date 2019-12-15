@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Simple web page</title>
+    
+  </head>
+  <body>
+    <h1 id="title">Title</h1>
+    
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+
+    <button class="my-button" type="submit">Min knapp</button>
+
+    <script>
+      const titleElement = document.getElementById("title");
+
+      setInterval(function() { 
+        if (titleElement.style.color === "red") {
+          titleElement.style.color = "blue";
+        } else {
+          titleElement.style.color = "red";
+        }
+      }, 500);
+    </script>
+  </body>
+</html>
