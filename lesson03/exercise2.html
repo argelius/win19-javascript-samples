@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Exercise 2</title>
+
+  </head>
+  <body>
+    <div id="myDiv">
+      <span>Hello</span>
+      <p><span>World</span></p>
+      <p><span>Again</span></p>
+    </div>
+
+    <div>
+      <p>Test</p>
+    </div>
+
+    <script>
+      /*const spans = document.getElementsByTagName("span");
+
+      for (let i = 0; i < spans.length; i += 1) {
+        if (spans[i].textContent !== "Hello") {
+          const el = spans[i];
+          el.setAttribute("style", "color: red;");
+        }
+      }*/
+
+      const spans = document.querySelectorAll("p > span");
+      const spansArray = Array.from(spans);
+
+      spansArray.forEach((el) => {
+        el.setAttribute("style", "color: red;");
+      });
+
+    </script>
+  </body>
+</html>
