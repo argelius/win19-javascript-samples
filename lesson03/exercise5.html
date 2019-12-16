@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Exercise 5</title>
+    
+  </head>
+  <body>
+    <button id="my-button">My button</button>
+    <input id="text-input" type="text">
+
+    
+    <div>
+      <h2>Password validation</h2>
+      <input id="my-password" type="password">
+      <p id="error"></p>
+    </div>
+
+    <script>
+      const buttonEl = document.getElementById("my-button");
+      const inputEl = document.getElementById("text-input");
+
+      function onClickButton(e) {
+        console.log(e.target.textContent);
+      }
+
+      function onInput(e) {
+        buttonEl.textContent = e.target.value;
+      }
+
+      buttonEl.addEventListener("click", onClickButton);
+      inputEl.addEventListener("input", onInput);
+
+      /**
+       * Validate password
+       */
+      const passwordEl = document.getElementById("my-password");
+
+      function onPasswordInput(e) {
+        const l = e.target.value.length;
+
+        if (l < 8) {
+          document.getElementById("error").textContent = "Password is too short.";
+        } else {
+          document.getElementById("error").textContent = "";
+        }
+      }
+
+      passwordEl.addEventListener("change", onPasswordInput);
+    </script>
+  </body>
+</html>
