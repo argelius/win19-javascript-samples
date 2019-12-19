@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title>Shopping list</title>
+    
+  </head>
+  <body>
+    <h1>My shopping list</h1>   
+
+    <label>
+      Enter a new item: <input id="text-input" type="text">
+      <button id="add-button">Add item</button>
+    </label>
+
+    <ul id="list"></ul>
+
+    <script>
+      const listEl = document.getElementById("list");
+      const inputEl = document.getElementById("text-input");
+      const buttonEl = document.getElementById("add-button");
+
+      function onClickDelete(e) {
+        this.removeEventListener("click", onClickDelete);
+        this.parentNode.remove();
+      }
+
+      buttonEl.addEventListener("click", function () {
+        const itemText = inputEl.value;
+
+        if (itemText.length > 0) {
+          const listItemEl = document.createElement("li");
+          listItemEl.textContent = itemText;
+
+          const deleteButtonEl = document.createElement("button");
+          deleteButtonEl.textContent = "Delete";
+          deleteButtonEl.addEventListener("click", onClickDelete);
+
+          listItemEl.appendChild(deleteButtonEl);
+
+          listEl.appendChild(listItemEl);
+          inputEl.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
