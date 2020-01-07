@@ -43,7 +43,7 @@
       /**
        * Exempel med en inre funktion. Oftast lättare att implementera.
        */
-      function findElementsByTagName(element, tagName) {
+      function getElementsByTagName(element, tagName) {
         let rv = [];
 
         function traverse(element) {
@@ -64,7 +64,7 @@
       /**
        * Utan inre funktion.
        */
-      function findElementsByTagName2(element, tagName) {
+      function getElementsByTagName2(element, tagName) {
         let rv = [];
 
         if (element.tagName.toLowerCase() === tagName.toLowerCase()) {
@@ -72,18 +72,48 @@
         }
 
         for (let i = 0; i < element.children.length; i += 1) {
-          findElementsByTagName2(element.children[i], tagName).forEach((result) => {
-            rv.push(result);
-          });
+          rv = rv.concat(getElementsByTagName2(element.children[i], tagName));
         }
         
         return rv;
       }
 
       /**
+       * Exempel utan rekursion.
+       */
+      function getElementsByTagName3(element, tagName) {
+        /**
+         * Använd en array för att hålla koll på vilka element
+         * vi ska kolla.
+         */
+        const stack = [element];
+        const rv = [];
+
+        /**
+         * Loopa till stacken är tom.
+         */
+        while (stack.length) {
+          const current = stack.pop();
+
+          if (current.tagName.toLowerCase() === tagName.toLowerCase()) {
+            rv.push(current);
+          }
+
+          /**
+           * Lägg till alla barn på stacken.
+           */
+          for (let i = 0; i < current.children.length; i += 1) {
+            stack.push(current.children[i]);
+          }
+        }
+
+        return rv;
+      }
+
+      /**
        * Börja på body-elementet.
        */
-      const elements = findElementsByTagName2(document.body, "td");
+      const elements = getElementsByTagName2(document.body, "td");
 
       console.log(elements);
     </script>
