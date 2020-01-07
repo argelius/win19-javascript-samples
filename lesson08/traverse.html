@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <title></title>
+    
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Column A</th>
+          <th>Column B</th>
+          <th>Column C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>2</td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      /**
+       * Exempel med en inre funktion. Oftast lättare att implementera.
+       */
+      function findElementsByTagName(element, tagName) {
+        let rv = [];
+
+        function traverse(element) {
+          if (element.tagName.toLowerCase() === tagName.toLowerCase()) {
+            rv.push(element);
+          }
+
+          for (let i = 0; i < element.children.length; i += 1) {
+            traverse(element.children[i]);
+          }
+        }
+
+        traverse(element);
+
+        return rv;
+      }
+
+      /**
+       * Utan inre funktion.
+       */
+      function findElementsByTagName2(element, tagName) {
+        let rv = [];
+
+        if (element.tagName.toLowerCase() === tagName.toLowerCase()) {
+          rv = [element];
+        }
+
+        for (let i = 0; i < element.children.length; i += 1) {
+          findElementsByTagName2(element.children[i], tagName).forEach((result) => {
+            rv.push(result);
+          });
+        }
+        
+        return rv;
+      }
+
+      /**
+       * Börja på body-elementet.
+       */
+      const elements = findElementsByTagName2(document.body, "td");
+
+      console.log(elements);
+    </script>
+  </body>
+</html>
